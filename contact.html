@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header-nav-bar">
+    <a href="/">
+      <img class="logo" src="assets/images/logo.png" alt="Company logo" />
+    </a>
+
+    <form>
+      <input type="text" placeholder="Search" />
+      <button type="submit">Search</button>
+    </form>
+
+    <nav>
+      <a href="index.html">Home </a>
+      <a href="shop.html"> Product </a>
+      <a href="index.html#about">About</a>
+      <a href="contact.html"> Contact</a>
+      <a href="klanten.html">Klanten</a>
+    </nav>
+    <aside class="cart">
+      <button id="cart-button">Cart</button>
+      <section class="cart-items"></section>
+    </aside>
+    <aside class="wishlist-display">
+      <button id="wishlist-button">Wishlist</button>
+      <section class="wishlist-items"></section>
+    </aside>
+  </header>
+
+  <br>
+  <hr>
+
+  <main>
+    <form class="form-headings">
+      <label for="fname">Voornaam</label>
+      <input type="text" class="form-box" id="fname" name="firstname" placeholder="Jouw naam.." required>
+
+      <label for="lname">Achternaam</label>
+      <input type="text" class="form-box" id="lname" name="lastname" placeholder="Jouw achternaam.." required>
+
+      <label for="pnumber">GSM Nummer</label>
+      <input type="text" class="form-box" id="pnumber" name="pnumber" placeholder="Jouw GSM nummer.." required>
+
+      <label for="email">Email</label>
+      <input type="text" class="form-box" id="email" name="email" placeholder="Jouw email.." required>
+
+      <label for="ask-question">Vraag ons</label>
+      <textarea class="form-box" id="ask-question" name="ask-question" placeholder="Stel jouw vraag.."
+        required></textarea>
+
+      <button type="submit" id="nextStep">Verzenden</button>
+    </form>
+
+
+    <address class="find-us">
+      <h2>Waar je ons kan vinden:</h2>
+      <p>AP Hogeschool</p>
+      <p>Ellermanstraat 33</p>
+      <p>2060 Antwerpen</p>
+    </address>
+
+    <div id="map" style="width: 100%; height: 400px"></div>
+
+    <script>
+      var map = L.map("map").setView([51.229767, 4.416172], 15);
+
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        {
+          maxZoom: 19,
+        }
+      ).addTo(map);
+
+      var customIcon = L.icon({
+        iconUrl: "assets/images/logo.png",
+        iconSize: [55, 70],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40],
+      });
+
+      L.marker([51.229767, 4.416172], { icon: customIcon })
+        .addTo(map)
+        .bindPopup("Mijn Cricket Shop!")
+        .openPopup();
+    </script>
+  </main>
+</body>
+
+<footer>
+  <hr>
+  <p>Copyright &copy; Rizwan Hussain</p>
+  <hr>
+</footer>
+
+</html>

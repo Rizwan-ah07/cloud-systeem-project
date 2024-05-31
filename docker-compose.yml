@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  php-apache:
+    image: rizwanali07/my-php-apache-app:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - /var/www/html
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: backend
